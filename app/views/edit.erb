@@ -1,0 +1,8 @@
+<form method="PUT" action="/robots">
+  <h3>Edit</h3>
+  <input type="text" name="robot[name]" value="<%= @robot.name %>">Name<br>
+  <input type="text" name="robot[city]" value="<%= @robot.city %>">City<br>
+  <input type="text" name="robot[state]" value="<%= @robot.state %>">State<br>
+  <input type="text" name="robot[department]" value="<%= @robot.department %>">Department<br>
+  <input type="submit" value="Create new robot">
+</form>
