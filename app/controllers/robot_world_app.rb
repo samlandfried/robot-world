@@ -10,14 +10,15 @@ class RobotWorldApp < Sinatra::Base
   end
 
   get '/robots' do
+    @robots = Robot.all
     erb :index
   end
 
   post '/robots' do
-    robot = Robot.new(params)
+    robot = Robot.new(params['robot'])
     robot.save
 
-    erb :index
+    redirect '/robots'
   end
 
   get '/robots/new' do
