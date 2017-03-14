@@ -31,6 +31,21 @@ class Robot
     Robot.new(robot)
   end
 
+  def self.update(id, new_params)
+    database.execute("UPDATE robots
+                      SET name = ?,
+                          city = ?,
+                          state = ?,
+                          department = ?
+                      WHERE id = ?",
+                          new_params['name'],
+                          new_params['city'],
+                          new_params['state'],
+                          new_params['department'],
+                          id)
+    Robot.find(id)
+  end
+
   def self.database
     database = SQLite3::Database.new('db/robot_world_development.db')
     database.results_as_hash = true
