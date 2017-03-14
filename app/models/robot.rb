@@ -31,6 +31,12 @@ class Robot
     Robot.new(robot)
   end
 
+  def self.delete(id)
+    database.execute("DELETE FROM robots
+                      WHERE id = ?;",
+                     id)
+  end
+
   def self.update(id, new_params)
     database.execute("UPDATE robots
                       SET name = ?,
@@ -38,11 +44,11 @@ class Robot
                           state = ?,
                           department = ?
                       WHERE id = ?",
-                          new_params['name'],
-                          new_params['city'],
-                          new_params['state'],
-                          new_params['department'],
-                          id)
+                     new_params['name'],
+                     new_params['city'],
+                     new_params['state'],
+                     new_params['department'],
+                     id)
     Robot.find(id)
   end
 
